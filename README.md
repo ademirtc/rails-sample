@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/821251/how-to-configure-ruby-on-rails-with-no-database

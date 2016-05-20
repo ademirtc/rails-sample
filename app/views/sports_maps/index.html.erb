@@ -1,0 +1,83 @@
+<body>
+<div class="page-header">
+  <h1>Title</h1>
+</div>
+
+<div class="wrap">
+        
+          <label>Localization:</label><br /><input type="text" ></input><br />
+				  <label>Radius:</label><br /><input type="text" ></input><br /> 
+          <label>Data to be considered:</label><br /> 
+          <input type="checkbox"  value="air-quality"> Air quality<br>
+          <input type="checkbox" value="ultraviolet"> UV Index (ultraviolet)<br>
+          <input type="checkbox"  value="humidity"> Humidity<br>
+          <input type="checkbox"  value="temperature"> Temperature<br>
+          <!--<input type="checkbox" name="meteorological" value="meteorological"> Meteorological data<br>-->
+          <input type="checkbox"  value="green-areas"> Green areas<br>
+          <input type="checkbox"  value="bike-paths"> Bike paths<br>
+          <!--<input type="checkbox" name="security" value="security"> Security<br>-->
+          <div id="legend">
+            <div id="caption-color"></div>
+            <div id="legend-labels">Good<br />Reasonable<br />Bad<br /></div>
+            <div class="clear"> </div>
+          </div>
+          <input type="submit" value="Submit">
+			</div>
+
+<div id="map-container">
+  <div id="map-canvas"></div>
+</div>
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>-->
+<script type="text/javascript">
+  function menu() {
+		$('.nav-toggle').click(function() {
+			if($(".nav").hasClass("side-closed")) {
+				$('.nav').animate({
+				    left: "0px",
+				}, 10.0, function() {
+				    $(".nav").removeClass("side-closed");
+				});
+			}
+			else {
+				$('.nav').animate({
+				    left: "-201px",
+				}, 100, function() {
+				    $(".nav").addClass("side-closed");
+				});
+			}
+		});
+	}
+	
+	//Menu Sidebar
+	$(window).resize(function() {
+		var windowSize = $(window).width();
+		$(".nav-toggle").remove();
+		
+		if (windowSize < 800) { 
+			$('.nav').css('left', '-201px').addClass('side-closed');
+			$('.nav').append( "<div class='nav-toggle'>Menu</div>" );
+		} else {
+			$('.nav').css('left', '0px').addClass('side-closed');
+		}
+		
+		menu();
+	});
+	
+	$(document).ready(function() {
+		var windowSize = $(window).width();
+		$(".nav-toggle").remove();
+		
+		if (windowSize < 800) { 
+			$('.nav').css('left', '-201px').addClass('side-closed');
+			$('.nav').append( "<div class='nav-toggle'>Menu</div>" );
+		} else {
+			$('.nav').css('left', '0px').addClass('side-closed');
+		}
+		
+		menu();
+	});
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgCU7lqml061P2n5nAGzRkXjNf7MxYuRA&signed_in=true&libraries=visualization&callback=initMap"></script>
+</body>
